@@ -1,0 +1,71 @@
+p {
+    font-size: 14px;
+}
+img {
+    width: 100px;
+    height: 100px;
+}
+.nom {
+    font-size: 30px;
+}
+.prenom {
+    font-size: 20px;
+}
+.age {
+    font-size: 18px;
+}
+h2 {
+    background-color: purple;
+    color: white;
+    text-align: center;
+}
+.date {
+    font-weight: bold;
+    color: brown;
+    font-size: 18px;
+}
+.entreprise {
+    font-size: 18px;
+}
+.poste {
+    font-size: 16px;
+}
+.diplome {
+    color: red;
+}
+.liste {
+    font-size: 18px;
+}
+ul li:before {
+    content: "\002605";
+}
+ul li {
+    list-style: none;
+}
+div.gauche {
+    display: flex;
+}
+/* div.gauche h1, div.gauche p {
+    line-height: 100px;
+} */
+.gauche h1 {
+    line-height: 100px;
+    margin-right: 20px;
+}
+.gauche p {
+    line-height: 100px;
+    margin-right: 20px;
+}
+/* animation */
+h2 {
+    animation-name: slidein;
+    animation-duration: 3s;
+}
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
