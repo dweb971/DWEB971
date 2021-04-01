@@ -380,6 +380,14 @@ function tableauHTML(rowS, tableauHTML, nbrJourMois, firtDay) {
 
                 }
 
+                // tr 6
+                if (i == 6) {
+
+                    j++;
+                    ecritureTableau(t, j, tableauHTML.rows[i].cells[t], nbrJourMois);
+
+                }
+
             }
 
         }
@@ -463,6 +471,7 @@ function ecritureTableau(t, j, tableauHTML, nbrJourMois){
 
         ecritureJour(j, tableauHTML, nbrJourMois);
     }
+    
 }
 
 

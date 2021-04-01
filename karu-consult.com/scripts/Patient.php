@@ -14,13 +14,24 @@ class Patient
     private $_visite;  // raison de la visite
     private $_patient; // patient du cabinet
 
+    private $_DBConnect;
+
 
 
 
 
     // methodes
-    public function __construct(array $data){
-       
+    public function __construct($connectOBJ){
+       // instance PDO
+       $this->set_DBConnect($connectOBJ);
+
+        
+    }
+
+
+    public function prise_rdv(array $data)
+    {
+
         // affectation donnees
         $this->set_civilite($this->nettoyer($data["civFrm"]));
         $this->set_prenom(ucfirst($this->nettoyer($data["prenomFrm"])));
@@ -36,11 +47,13 @@ class Patient
         //echo $this->insert_data();
 
 
-        
-
     }
 
-    public function insert_data(){
+
+
+
+    public function insert_data($pdo){
+
 
         if( preg_match('/[0-9]+/', $this->get_tel() ) == true ){
             
@@ -246,6 +259,26 @@ class Patient
     public function set_patient($_patient)
     {
         $this->_patient = $_patient;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _DBConnect
+     */ 
+    public function get_DBConnect()
+    {
+        return $this->_DBConnect;
+    }
+
+    /**
+     * Set the value of _DBConnect
+     *
+     * @return  self
+     */ 
+    public function set_DBConnect($_DBConnect)
+    {
+        $this->_DBConnect = $_DBConnect;
 
         return $this;
     }

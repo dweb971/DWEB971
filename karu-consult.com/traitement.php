@@ -9,6 +9,7 @@ spl_autoload_register(function ($name) {
 
 try {
    // instanciation des classes
+   include("scripts/Connect.php");
    include("scripts/Patient.php");
 
 
@@ -21,8 +22,12 @@ $action = $_POST['action'];
 
 if($action === 'rdv'){
 
+    // creation obj PDO
+    $db = new Connect();
+
     // traitement formulaire rdv
-    $patient = new Patient($_POST);
+    $patient = new Patient($db);
+    $patient->prise_rdv($_POST);
 }
 
 print_r($patient);
