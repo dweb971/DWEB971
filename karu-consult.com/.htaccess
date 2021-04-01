@@ -1,0 +1,13 @@
+# urlrewrite
+RewriteEngine On
+
+
+# n'importe quelle page html
+# stockee dans variable serveur $1
+# et converti en php
+
+# RewriteRule ([a-z\/-]+)\.html$ $1.php 
+
+# redirection https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]

@@ -1,0 +1,221 @@
+/*  ceci est un commentaire pour ma feuille de style      */
+body {
+    width: 1275px;
+    height: auto;
+}
+h1 {
+    font-family: 'Syne Tactile', cursive;
+    font-size: 40px;
+    font-weight: 600;
+}
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none; 
+}
+
+
+
+
+/* HEADER */
+header {
+    display: flex;
+}
+header div:first-child {
+    width: 350px;
+}
+header div:first-child > img {
+    width: 250px;
+    height: 150px;
+    display: block;
+}
+header div:last-child > img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin-left: 620px;
+    margin-top : 68px;
+}
+
+
+/* NAVIGATION */
+nav {
+    background-color: #6790a1;
+}
+nav ul {
+    display: flex;
+    text-align: center;
+    height: 50px;
+}
+nav ul {
+    padding: 0px;
+}
+nav ul li {
+    width: 250px;
+}
+nav ul li:first-child, nav ul li:hover:first-child {
+    margin : 0px;
+}
+nav ul li a {
+    color : white;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    
+}
+nav ul li:hover{
+    background-color: #fcbbcf;
+}
+nav ul li a:hover {
+    color : gray;
+}
+
+/*  CONTENT  */
+div > h1 {
+    text-align: center;
+}
+div > h2 {
+    text-align: center;
+    font-size: 35px;
+}
+div > h3 {
+    text-align: center;
+    font-size: 25px;
+}
+div p {
+    text-align: center;
+}
+div ul#btnA {
+    display: flex;
+    margin-left: 352.50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+div ul#btnA li {
+    width: 165px;
+    height: 50px
+}
+div ul#btnA li:first-child {
+    margin-right: 20px;
+    border: 2px solid green;
+}
+div ul#btnA li:hover {
+    filter: brightness(80%);
+}
+div ul#btnA li:last-child {
+    border: 2px solid #6790a1;
+}
+div ul#btnA li a {
+    display: block;
+    width: 165px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    text-decoration: none;
+}
+div ul#btnA li:first-child a {
+    background-color: green;
+}
+div ul#btnA li:last-child a {
+    background-color: #6790a1;
+}
+
+/*   */
+div.container ul.list-group {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+div.container ul.list-group li:first-child:after  {
+    content: " > ";
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.alertG {
+    color: orange;
+}
+.alertR {
+    color: red;
+    font-weight: bold;
+}
+.alert {
+    color: green;
+    font-weight: inherit;
+}
+
+/* FORMULAIRE */
+input[type="text"], select, input[type="email"], input[type="tel"] {
+    margin-bottom: 10px;
+}
+.obj {
+    font-weight: bold;
+    color: red;
+}
+
+/* CALENDRIER */
+table.table {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+table.table thead {
+    background-color: #6790a1;
+    color: white;
+}
+table.table tbody tr td:hover {
+    background-color: #fcbbcf;
+}
+.date_jour {
+    background-color: gray;
+    font-weight: bold;
+}
+.width {
+    width: 88px;
+}
+.error {
+    font-size: .8em;
+    font-weight: bold;
+    color: red;
+}
+.errorBG {
+    background: #fcbbcf;
+    border-color: red;
+}
+.off {
+    display: none;
+}
+.on {
+    display: block;
+    background: deeppink;
+}
+.selectBG {
+    background: deeppink;
+}
+
+/*  FOOTER  */
+footer {
+    background-color: #6790a1;
+    display: flex;
+}
+footer nav {
+    width: 250px;
+}
+footer nav ul {
+    display: inline-block;
+    margin-left: 30px;
+}
+footer nav ul li, footer nav ul li a {
+    width: auto;
+    height: 30px;
+}
+footer nav ul li a {
+    line-height: 30px;
+    text-align: left;
+}
+footer address {
+    width: 350px;
+}
