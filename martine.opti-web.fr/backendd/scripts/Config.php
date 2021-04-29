@@ -29,6 +29,41 @@
 
     }
 
+    public function ajouter_user(array $data)
+    {
+        //print_r($data);
+
+        $this->set_nom($this->nettoyer($data["nom"]));
+        $this->set_prenom($this->nettoyer($data["prenom"]));
+        $this->set_tel($this->nettoyer($data["telephone"]));
+        $this->set_naissance($this->nettoyer($data["naissance"]));
+        $this->set_login($this->nettoyer($data["email"]));
+        $this->set_pass($this->nettoyer(password_hash($data["password"],PASSWORD_DEFAULT)));
+
+        //echo $this->get_pass();
+
+        //insert table profil puis user
+
+        //print_r($_SESSION);
+
+        if(!isset($_SESSION["login"]))
+        {
+            // redirection page connexion
+
+        } else {
+            $dates = date("Y-m-d H:i:s");  //heure locale de la machine
+
+            $reqI = "INSERT INTO profil (nom, prenom, telephone, date_naissance, dateAdd, dateUpdate) 
+            VALUES ('".$this->get_nom()."', '".$this->get_prenom()."', '".$this->get_tel()."', '".$this->get_naissance()."', '".$dates."', '".$dates."')";
+
+            $dbh = $this->get_connectDB()->query($reqI);
+
+            print_r($dbh);
+        }
+
+
+    }
+
     public function update_pass(array $data)
     {
         $this->set_login($this->nettoyer(strtolower($data["email"])));

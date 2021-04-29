@@ -32,6 +32,11 @@ switch ($_POST["nomForm"]) {
         echo "profil";
         break;
 
+    case 'add':
+       # code...
+       $config->ajouter_user($_POST);
+       break;
+
     case 'newPass':
         # code...
         $config->new_pass($_POST["email"]);
