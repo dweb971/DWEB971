@@ -22,7 +22,7 @@ class Connect
     public function __construct()
     {
         // indiquer informations de connexion db
-        $this->host = 'localhost';
+        $this->host = 'localhost'; // 127.0.0.1
         $this->user = 'karuconsult';
         $this->password = 'karuconsult';
         $this->db = 'karuconsult';
@@ -43,7 +43,7 @@ class Connect
          */
         try {
             // creation objet PDO avec propriete en parametre
-            $this->pdo = new PDO('mysql:host'.$host.';dbname='.$db, $user, $pass);
+            $this->pdo = new PDO('mysql:host='.$host.';dbname='.$db, $user, $pass);
             $this->pdo->exec('SET CHARACTER SET utf8');
             $this->pdo->exec('SET NAMES utf8');
             return $this->pdo;  // retourner objet PDO

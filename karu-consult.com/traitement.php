@@ -30,4 +30,3 @@ if($action === 'rdv'){
     $patient->prise_rdv($_POST);
 }
 
-print_r($patient);

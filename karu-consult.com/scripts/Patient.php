@@ -19,18 +19,17 @@ class Patient
 
 
 
-
     // methodes
     public function __construct($connectOBJ){
        // instance PDO
-       $this->set_DBConnect($connectOBJ);
-
+       $this->set_DBConnect($connectOBJ->pdo);
         
     }
 
 
     public function prise_rdv(array $data)
     {
+        //print_r($this->get_DBConnect());
 
         // affectation donnees
         $this->set_civilite($this->nettoyer($data["civFrm"]));
@@ -39,12 +38,47 @@ class Patient
         $this->set_tel($this->nettoyer($data["telFrm"]));
         $this->set_email(strtolower($this->nettoyer($data["emailFrm"])));
         $this->set_visite($this->nettoyer($data["visiteFrm"]));
-        $this->set_patient($this->nettoyer($data["patientFrm"]));
+
+        # test patient cabinet o/n
+        if( !isset($data["patientFrm"]) ){
+            $this->set_patient(0);
+        } else {
+            $this->set_patient($this->nettoyer($data["patientFrm"]));
+        } # end $data["patientFrm"]
+
         $this->set_daterdv($this->nettoyer($data["rdvFrm"]));
         $this->set_heure($this->nettoyer($data["heureFrm"]));
 
         // test sur telephone
         //echo $this->insert_data();
+        $dates = date("Y-m-d H:i:s");
+
+        // requet insert
+        $reqIP = "INSERT INTO patient (civilite, nom, prenom, telephone, email, dateAdd, dateUpdate) 
+        VALUES ('".$this->get_civilite()."', '".$this->get_nom()."', '".$this->get_prenom()."', '".$this->get_tel()."',
+        '".$this->get_email()."', '".$dates."', '".$dates."')";     # requete insert patient
+
+
+        $dbh = $this->get_DBConnect()->query($reqIP);
+        $idPatient = $this->get_DBConnect()->lastInsertId() ;
+
+        if(isset($idPatient)){
+            # insert rdv
+            $reqIR = "INSERT INTO rendez_vous (idPatient, visite, patient, date_rdv, heure_rdv, dateAdd, dateUpdate) 
+            VALUES ('".$idPatient."', '".$this->get_visite()."', '".$this->get_patient()."', 
+            '".$this->get_daterdv()."', '".$this->get_heure()."', '".$dates."', '".$dates."')"; # requete insert rendez_vous
+
+            $dbh = $this->get_DBConnect()->query($reqIR);
+
+            print_r($reqIR);
+
+        } else {
+            echo "erreur select idppatient";
+
+        } # end $idpatient
+        
+        print_r($idPatient );
+
 
 
     }
@@ -66,10 +100,8 @@ class Patient
 
     public function nettoyer($chaine){
 
-        // 
+        // securite
         $chaine = trim(strip_tags($chaine));
-
-
         return $chaine;
 
     }
