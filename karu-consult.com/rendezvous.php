@@ -74,7 +74,7 @@ include("includes/head.php");
                     <?php include("includes/forms/heure.php");  ?>
                 </div>
                 <div class="col-3">
-
+                    <div class="alert alert-danger errorDH" role="alert" id="errorDH"></div>
                 </div>
             </div>
         </div>

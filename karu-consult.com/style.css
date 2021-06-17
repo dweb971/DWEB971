@@ -16,7 +16,9 @@ ul li {
     list-style: none; 
 }
 
-
+.errorDH {
+    display: none;
+}
 
 
 /* HEADER */

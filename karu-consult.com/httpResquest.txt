@@ -1,0 +1,26 @@
+    httpRequest = new XMLHttpRequest();
+    httpRequest.open('methode', 'url', true);
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send();
+
+    httpRequest.onreadystatechange = function() {
+        // instructions de traitement de la réponse
+
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        // tout va bien, la réponse a été reçue
+
+        if (httpRequest.status === 200) {
+
+            // parfait !
+
+
+        } else {
+            // il y a eu un problème avec la requête,
+            // par exemple la réponse peut être un code 404 (Non trouvée)
+            // ou 500 (Erreur interne au serveur)
+        }
+
+
+        } else {
+            // pas encore prête
+        }

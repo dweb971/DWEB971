@@ -12,21 +12,39 @@ try {
    include("scripts/Connect.php");
    include("scripts/Patient.php");
 
+   // creation obj PDO
+   $db = new Connect();
+
+   # classe Patient
+   $patient = new Patient($db);
+
 
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
 
 
-$action = $_POST['action'];
+# condition ternaire
+$action = isset($_POST['action']) ? $_POST["action"]: '';
 
-if($action === 'rdv'){
+switch ($action) {
+    case 'rdv':
+        // traitement formulaire rdv
+        $patient->prise_rdv($_POST);    
+        break;
+    
+    default:
+        # code...
+        break;
+}
 
-    // creation obj PDO
-    $db = new Connect();
+# test si jour et heure deja pris
+if( isset($_POST["rdvFrm"], $_POST["heureFrm"]) ){
 
-    // traitement formulaire rdv
-    $patient = new Patient($db);
-    $patient->prise_rdv($_POST);
+    $date = $_POST["rdvFrm"];
+    $heure = $_POST["heureFrm"];
+
+    $patient->cherche_date_heure($date, $heure);
+
 }
 

@@ -15,7 +15,7 @@ function recup_mois_annee(mois, annee) {
         //retirer tous style css
         for(let i=0; i< agenda.childNodes[3].childElementCount; i++){
 
-            console.log(agenda.childNodes[3]);
+            //console.log(agenda.childNodes[3]);
 
             for(let td=0; td < agenda.childNodes[3].children[i].childElementCount; td++){
 

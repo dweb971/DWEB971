@@ -53,17 +53,19 @@ class Patient
         //echo $this->insert_data();
         $dates = date("Y-m-d H:i:s");
 
-        // requet insert
-        $reqIP = "INSERT INTO patient (civilite, nom, prenom, telephone, email, dateAdd, dateUpdate) 
-        VALUES ('".$this->get_civilite()."', '".$this->get_nom()."', '".$this->get_prenom()."', '".$this->get_tel()."',
-        '".$this->get_email()."', '".$dates."', '".$dates."')";     # requete insert patient
+        # test si patient existe deja
+        $reqSP = "SELECT id, nom, prenom FROM patient 
+        WHERE nom = '".$this->get_nom()."' AND prenom = '".$this->get_prenom()."' ";
 
+        $req = $this->get_DBConnect()->prepare($reqSP);
+        $req->execute();
 
-        $dbh = $this->get_DBConnect()->query($reqIP);
-        $idPatient = $this->get_DBConnect()->lastInsertId() ;
+        $result = $req->fetch(PDO::FETCH_ASSOC);
 
-        if(isset($idPatient)){
-            # insert rdv
+        if( $req->rowCount() != 0 ){
+
+            $idPatient = $result["id"];
+
             $reqIR = "INSERT INTO rendez_vous (idPatient, visite, patient, date_rdv, heure_rdv, dateAdd, dateUpdate) 
             VALUES ('".$idPatient."', '".$this->get_visite()."', '".$this->get_patient()."', 
             '".$this->get_daterdv()."', '".$this->get_heure()."', '".$dates."', '".$dates."')"; # requete insert rendez_vous
@@ -72,13 +74,57 @@ class Patient
 
             print_r($reqIR);
 
+
         } else {
-            echo "erreur select idppatient";
 
-        } # end $idpatient
+            // requet insert
+        $reqIP = "INSERT INTO patient (civilite, nom, prenom, telephone, email, dateAdd, dateUpdate) 
+        VALUES ('".$this->get_civilite()."', '".$this->get_nom()."', '".$this->get_prenom()."', '".$this->get_tel()."',
+        '".$this->get_email()."', '".$dates."', '".$dates."')";     # requete insert patient
+
+
+        $dbh = $this->get_DBConnect()->query($reqIP);
+            $idPatient = $this->get_DBConnect()->lastInsertId() ;
+
+            if (isset($idPatient)) {
+                # insert rdv
+            $reqIR = "INSERT INTO rendez_vous (idPatient, visite, patient, date_rdv, heure_rdv, dateAdd, dateUpdate) 
+            VALUES ('".$idPatient."', '".$this->get_visite()."', '".$this->get_patient()."', 
+            '".$this->get_daterdv()."', '".$this->get_heure()."', '".$dates."', '".$dates."')"; # requete insert rendez_vous
+
+            $dbh = $this->get_DBConnect()->query($reqIR);
+
+                print_r($reqIR);
+            } else {
+                echo "erreur select idppatient";
+            } # end $idpatient
         
-        print_r($idPatient );
+            print_r($idPatient);
+       
 
+        } # end rowCount
+
+
+    }
+
+    public function cherche_date_heure($date, $heure)
+    {
+        // affiche date/heure
+        // echo "le rdv est pour le $date à $heure.";
+
+        # cherche date/heure dans table rendez_vous
+        $requete = "SELECT date_rdv, heure_rdv FROM rendez_vous 
+        WHERE date_rdv = '".$date."' AND heure_rdv = '".$heure."'";
+
+        $reqSD = $this->get_DBConnect()->prepare($requete);
+        $resultat = $reqSD->execute();
+
+        # si 1 resultat
+        if($reqSD->rowCount() != 0){
+            
+            # date pas disponible
+            echo "<p>Rendez-vous impossible, choisir une autre date ou une autre heure!</p>";
+        }
 
 
     }
