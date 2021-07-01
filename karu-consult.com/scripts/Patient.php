@@ -29,7 +29,7 @@ class Patient
 
     public function prise_rdv(array $data)
     {
-        //print_r($this->get_DBConnect());
+        //print_r($this->get_DBConnect());   
 
         // affectation donnees
         $this->set_civilite($this->nettoyer($data["civFrm"]));
