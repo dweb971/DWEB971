@@ -17,7 +17,7 @@ try {
 
 
 } catch (Exception $e) {
-    echo $e->getMessage(), "\n";
+    echo $e->getMessage(), "\n";    
 }
 
 $db = new Connect();
