@@ -1,0 +1,47 @@
+/* Commentaire en css   */
+div.container {
+    margin-bottom: 50px;
+}
+div.container div.row div.col-12 a {
+    text-align: center;
+    display: block;
+}
+div.container div.row div.col-12 img {
+    width: 191px;
+}
+#br {
+    width: 1024px;
+    margin-left: 187px;
+    margin-bottom: 50px;
+}
+#br div input {
+    width: 650px;
+}
+.dst div div p {
+    text-align: center;
+}
+.dst div div a {
+    text-align: center;
+    display: block;
+}
+
+/* bloc message */
+#msg {
+    display: none;
+}
+#dst div div.col-6:last-child div.container {
+    display: none;
+}
+/*
+#dst div div.col-6:last-child:hover div.container {
+    display: block;
+}
+*/
+
+/* texte de couleur bleu */
+.blue {
+    color: blue;
+}
+.oBlue {
+    color: darkcyan;
+}
