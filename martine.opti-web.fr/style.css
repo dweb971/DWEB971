@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Karantina-Light";
+    src: url("fonts/Karantina-Regular.ttf");
+  }
+
+  p {
+    font-family: Karantina-Light, "Trebuchet MS", Verdana, sans-serif;
+  }

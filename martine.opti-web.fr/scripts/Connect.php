@@ -23,9 +23,9 @@ class Connect
     {
         // indiquer informations de connexion db
         $this->host = 'localhost'; // 127.0.0.1
-        $this->user = 'projets';
-        $this->password = 'gkE8Ud4K46';
-        $this->db = 'projets';
+        $this->user = 'adminr';
+        $this->password = 'Ec68xE7S8h';
+        $this->db = 'testrsma';
 
         $this->instance_db($this->host, $this->db, $this->user, $this->password);
 

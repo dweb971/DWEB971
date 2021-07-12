@@ -1,4 +1,14 @@
 <h2>Gestion utilisateurs</h2>
+<?php
+    if( isset($_SESSION["msg"]))
+    {
+?>
+        <div class="alert alert-success" role="alert">
+        <?php echo $_SESSION["msg"]; ?>
+        </div>
+<?php
+    }
+?>
 
 <ul>
     <li>
@@ -10,6 +20,10 @@
 </ul>
 <div class="liste" id="l">
     <h3>Liste utilisateur</h3>
+    <?php 
+        // del session msg uniquement temporairement
+        $_SESSION["msg"] = array();
+    ?>
 </div>
 <div class="addU" id="aU">
     <h3>Ajouter utilisateur</h3>

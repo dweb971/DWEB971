@@ -57,8 +57,37 @@
             VALUES ('".$this->get_nom()."', '".$this->get_prenom()."', '".$this->get_tel()."', '".$this->get_naissance()."', '".$dates."', '".$dates."')";
 
             $dbh = $this->get_connectDB()->query($reqI);
+            $idprofil = $this->get_connectDB()->lastInsertId();
 
-            print_r($dbh);
+            if( $idprofil < 0)
+            {
+                // error
+
+
+            } else {
+                // insert into user
+                $reqU = "INSERT INTO user (idprofil, login, password, dateAdd, dateUpdate) 
+                VALUES ('".$idprofil."', '".$this->get_login()."', 
+                '".$this->get_pass()."', '".$dates."', '".$dates."')";
+
+                $dbh = $this->get_connectDB()->query($reqU);
+
+                if($dbh->rowCount() === 1)
+                {
+                    // insert ok
+                    $_SESSION["msg"] = "<p>L'ajout user $idprofil est réussi.</p>";
+
+                    /* Ceci produira une erreur. Notez la sortie ci-dessus,
+                    * qui se trouve avant l'appel à la fonction header() */
+                    header('Location: https://'.$_SERVER["HTTP_HOST"].'/backendd/index.php?m=use');
+                    exit;
+
+                } else {
+
+                }
+
+            }
+
         }
 
 

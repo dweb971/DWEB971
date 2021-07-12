@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Karantina-Light";
+    src: url("fonts/Karantina-Regular.ttf");
+  }
+
+  p {
+    font-family: Karantina-Light, "Trebuchet MS", Verdana, sans-serif;
+  }
+  .form-row {
+    margin-bottom: 15px; 
+}
+
+
+div.invalid-feedback {
+  margin-right: 10px !important;
+}
