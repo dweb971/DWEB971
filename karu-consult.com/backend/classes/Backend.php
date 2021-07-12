@@ -113,7 +113,7 @@ class Backend
         # find id exist
         $reqS = "SELECT * FROM user WHERE id = '".$id."' ";
         $req = $this->get_DBConnect()->prepare($reqS);
-        $req->execute();
+        $req->execute();  
 
         if($req->rowCount() === 1)
         {
@@ -147,7 +147,7 @@ class Backend
         $p = "abcdefghjkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789@&=#";
         $p = str_shuffle($p);
         $pP = str_split($p, 11);
-        $index = rand(0, 4);
+        $index = rand(0, 4);  
 
         $password = $pP[$index];
 
